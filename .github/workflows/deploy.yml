@@ -16,7 +16,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - run: mkdir _site && cat parts/p* | base64 -d | tar -xz -C _site && touch _site/.nojekyll && ls _site
+      - run: mkdir _site && cat parts/p* | base64 -d | tar -xz -C _site && cp google*.html _site/ && touch _site/.nojekyll && ls _site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
